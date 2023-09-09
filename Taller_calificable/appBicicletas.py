@@ -18,7 +18,7 @@ def agregar_usuario():
 
 def prestar_bici():
     tarjeta=input("Ingresa su numero de tarjeta: ")
-    if any(usuario["tarjeta"]== tarjeta for usuario in bd_usuarios):
+    if any(usuario["num_tarjeta"] == tarjeta for usuario in bd_usuarios):
         origen = input("Ingrese su origen: ")
         destino = input("Ingrese su destino: ")
         bicis_disponibles[bicicleta]["origen"]=origen
