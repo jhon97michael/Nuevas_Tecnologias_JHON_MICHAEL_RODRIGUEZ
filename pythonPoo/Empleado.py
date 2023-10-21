@@ -3,6 +3,7 @@
 from Persona import Persona
 
 #Creamos la clase Empleado y le damos la HERENCIA de persona
+
 class Empleado(Persona):
 
     def __init__(self,id,nombre,apellido,correo,contrasena,cargo,salario,tipo_contrato):
@@ -36,8 +37,8 @@ class Empleado(Persona):
     def tipo_contrato(self):
         return self._tipo_contrato
 
-    @tipo_contrato
-    def tipo_contrato(self,tipo_contrato):
+    @tipo_contrato.setter
+    def tipo_contrato(self, tipo_contrato):
         self._tipo_contrato = tipo_contrato
 
 
@@ -45,16 +46,37 @@ class Empleado(Persona):
 
 
     def registrar_usuario(self):
-        id = input(f"Ingrese su identificacion: ")
-        nombre = input(f"Ingrese su nombre: ")
-        apellido = input(f"Ingrese su apellido: ")
-        correo = input(f"Ingrese su correo: ")
-        contrasena = input(f"Ingrese su contraseña: ")
-        cargo = input(f"Ingrese el cargo del empleado: ")
-        salario = float(input(f"Ingrese el salario: "))
-        tipo_contrato = input(f"Ingrese el tipo de contrato: ")
+        self._id = input(f"Ingrese su identificacion: ")
+        self._nombre = input(f"Ingrese su nombre: ")
+        self._apellido = input(f"Ingrese su apellido: ")
+        self._correo = input(f"Ingrese su correo: ")
+        self._contrasena = input(f"Ingrese su contraseña: ")
+        self._cargo = input(f"Ingrese el cargo del empleado: ")
+        self._salario = float(input(f"Ingrese el salario: "))
+        self._tipo_contrato = input(f"Ingrese el tipo de contrato: ")
 
     def imprimir_registro(self):
         super().imprimir_registro() #Otra forma de sobreescribir
         print(f"Cargo: {self._cargo} Salario: {self._salario} Tipo de contrato: {self._tipo_contrato}")
+
+
+    def iniciar_sesion(self):
+        correo_empleado = input("Ingrese el correo registrado: ")
+        contrasena_empleado = input("Ingrese contraseña: ")
+
+        if correo_empleado == self.correo and contrasena_empleado == self.contrasena:
+            return True
+
+        else:
+            return False
+
+
+
+
+    def appEmpleado(self, iniciar_sesion, imprimir_registro):
+        iniciar_sesion(True)
+        print("Has iniciado sesion.")
+        imprimir_registro()
+
+
 
